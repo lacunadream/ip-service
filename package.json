@@ -1,0 +1,19 @@
+{
+  "name": "ip-service",
+  "version": "1.0.0",
+  "description": "barebones restful service for updating remote machine's IP",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lacunadream/ip-service.git"
+  },
+  "author": "lacunadream",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lacunadream/ip-service/issues"
+  },
+  "homepage": "https://github.com/lacunadream/ip-service#readme"
+}
