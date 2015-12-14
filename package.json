@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/lacunadream/ip-service.git"
   },
+  "dependencies": {
+    "express": "4.13.3"
+  },
   "author": "lacunadream",
   "license": "ISC",
   "bugs": {
