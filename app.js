@@ -9,7 +9,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', process.env.PORT);
 
 app.post('/api', function(req, res) {
 	var ip = req.body.ip;
