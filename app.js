@@ -11,6 +11,10 @@ app.use(bodyParser.json());
 
 app.set('port', process.env.PORT || 3000);
 
+app.post('/api', function(req, res) {
+	var ip = req.body.ip;
+})
+
 app.get('/', function(req, res) {
     res.json({ message: 'eff off' });   
 });
