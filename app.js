@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
 
-app.get('/', function(request, response) {
+app.get('/', function(req, res) {
   res.json({ message: 'eff off' });  
 });
 
