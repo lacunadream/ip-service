@@ -9,7 +9,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set('port', process.env.PORT);
+app.set('port', (process.env.PORT || 5000));
 
 app.post('/api', function(req, res) {
 	var ip = req.body.ip;
@@ -20,5 +20,5 @@ app.get('/', function(req, res) {
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+  console.log('Node app is running on port', app.get('port'));
 });
