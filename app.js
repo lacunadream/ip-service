@@ -15,7 +15,7 @@ app.set('port', (process.env.PORT || 3000));
 app.post('/api', function(req, res) {
 	var ip = req.body.ip;
 	console.log(ip)
-	res.json(ip)
+	res.json({ message: 'eff off' })
 })
 
 app.get('/', function(req, res) {
