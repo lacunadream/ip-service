@@ -12,7 +12,10 @@
     "url": "git+https://github.com/lacunadream/ip-service.git"
   },
   "dependencies": {
-    "express": "4.13.3"
+    "body-parser": "^1.14.1",
+    "express": "4.13.3",
+    "mongoose": "^4.3.1",
+    "morgan": "^1.6.1"
   },
   "author": "lacunadream",
   "license": "ISC",
