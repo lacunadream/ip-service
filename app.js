@@ -15,7 +15,7 @@ app.set('port', (process.env.PORT || 5000));
 
 // Model because one file apps are the vogue
 
-console.log(process.env.DB);
+// console.log(process.env.DB);
 
 mongoose.connect(process.env.DB);
 mongoose.connection.on('error', function() {
@@ -41,7 +41,6 @@ app.post('/api', function(req, res) {
 	store.save(function(err) {
 		if (err) return (err);
 	})
-
 })
 
 app.get('/', function(req, res) {
