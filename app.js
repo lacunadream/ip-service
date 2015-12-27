@@ -22,17 +22,26 @@ mongoose.connection.on('error', function() {
   console.error('MongoDB Connection Please. Error make sure that MongoDB is running.');
 });
 
-var store = new mongoose.Schema({
+var ipSchema = new mongoose.Schema({
 	ip: String
-})
+});
 
-
+var Store = mongoose.model('Store', ipSchema);
 
 // Routes
 app.post('/api', function(req, res) {
-	var ip = req.body.ip;
-	console.log(ip)
-	res.json({ message: ip})
+	var machineIP = req.body.ip;
+	console.log(machineIP)
+	res.json({ message: machineIP})
+
+	var store = new Store({
+		ip : machineIP
+	}) 
+
+	store.save(function(err) {
+		if (err) return (err);
+	})
+
 })
 
 app.get('/', function(req, res) {
