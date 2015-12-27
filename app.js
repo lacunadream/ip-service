@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
 var fs = require('fs');
-var secret = require('./secret');
+// var secret = require('./secret');
  
  var app = express()
 // App shit
@@ -15,7 +15,9 @@ app.set('port', (process.env.PORT || 5000));
 
 // Model because one file apps are the vogue
 
-mongoose.connect(process.env.DB || secret.db);
+console.log(process.env.DB);
+
+mongoose.connect(process.env.DB);
 mongoose.connection.on('error', function() {
   console.error('MongoDB Connection Please. Error make sure that MongoDB is running.');
 });
@@ -23,6 +25,7 @@ mongoose.connection.on('error', function() {
 var store = new mongoose.Schema({
 	ip: String
 })
+
 
 
 // Routes
