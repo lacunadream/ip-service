@@ -23,7 +23,8 @@ mongoose.connection.on('error', function() {
 });
 
 var ipSchema = new mongoose.Schema({
-	ip: String
+	ip: String, 
+	date: { type : Date, default: Date.now }
 });
 
 var Store = mongoose.model('Store', ipSchema);
