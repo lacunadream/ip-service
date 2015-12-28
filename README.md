@@ -2,7 +2,9 @@
 Routinely store your machine's current ip address in a remote database.
 
 ####Node + MongoDB
-Barebones restful service for updating and storing remote machine's IP
+Barebones restful service for updating and storing remote machine's IP.
+
+In order to provide db's uri, use either ```set DB=<string>``` or ```heroku config:set DB=<string>```
 
 ####Scripts
 ```gah.sh``` is the bash script that obtains your machine's ip and POSTs it to the restful service. 
