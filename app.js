@@ -44,6 +44,16 @@ app.post('/api', function(req, res) {
 	})
 })
 
+app.get('/api', function(req, res){
+	Store
+		.findOne()
+		.sort('-date')
+		.exec(function(err,latest) {
+			if (err) return (err)
+			res.json(latest.ip)
+		})
+})
+
 app.get('/', function(req, res) {
     res.json({ message: 'eff off' });   
 });
