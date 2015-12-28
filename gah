@@ -1,0 +1,10 @@
+#!/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/scripts
+wget http://ipinfo.io/ip -qO - | cat
+
+asd=$(wget http://ipinfo.io/ip -qO -)
+echo $asd
+
+curl --data "ip=$asd" https://ldipservice.herokuapp.com/api
+
+

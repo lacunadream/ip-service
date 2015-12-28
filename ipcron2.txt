@@ -1,0 +1,2 @@
+
+*/30 * * * * /home/lacunadream/scripts/gah
