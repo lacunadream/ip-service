@@ -5,6 +5,7 @@ ip=$(curl ldipservice.herokuapp.com/api)
 echo $ip
 #echo "sigh"
 
+#trims double quotes
 fuck="${ip:1:${#ip}-2}"
 #echo $fuck
 
