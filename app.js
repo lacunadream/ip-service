@@ -54,6 +54,18 @@ app.get('/api', function(req, res){
 		})
 })
 
+// Directly outputs the link
+
+app.get('/link', function(req, res){
+	Store
+		.findOne()
+		.sort('-date')
+		.exec(function(err,latest) {
+			if (err) return (err)
+			res.send("<a href='http://" + latest.ip + "'>http://" + latest.ip + "</a>")
+		})
+})
+
 app.get('/', function(req, res) {
     res.json({ message: 'eff off' });   
 });
