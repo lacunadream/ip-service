@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var fs = require('fs');
 // var secret = require('./secret');
  
- var app = express()
+ var app = express();
 // App shit
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
