@@ -62,7 +62,20 @@ app.get('/link', function(req, res){
 		.sort('-date')
 		.exec(function(err,latest) {
 			if (err) return (err)
-			res.send("<a href='http://" + latest.ip + "'>http://" + latest.ip + "</a>")
+			var d = latest.date
+
+			function zp(n) {
+			  return (n > 9 ? '' : '0') + n;
+			}
+
+			var formattedDate = zp(d.getUTCDate()) + '/' 
+			    + zp(d.getUTCMonth() + 1) + '/' 
+			    + d.getUTCFullYear() + ', ' 
+			    + zp(d.getUTCHours()) + ':' 
+			    + zp(d.getUTCMinutes()) + ':' 
+			    + zp(d.getUTCSeconds());
+
+			res.send("<a href='http://" + latest.ip + "'>http://" + latest.ip + "</a>  |  " + formattedDate)
 		})
 })
 
@@ -76,15 +89,16 @@ app.get('/date', function(req, res){
 			if (err) return (err)
 			var d = latest.date
 
-		function zp(n) {
-  return (n > 9 ? '' : '0') + n;
-}
-var formattedDate = zp(d.getUTCDate()) + '/' 
-    + zp(d.getUTCMonth() + 1) + '/' 
-    + d.getUTCFullYear() + ', ' 
-    + zp(d.getUTCHours()) + ':' 
-    + zp(d.getUTCMinutes()) + ':' 
-    + zp(d.getUTCSeconds());
+			function zp(n) {
+			  return (n > 9 ? '' : '0') + n;
+			}
+
+			var formattedDate = zp(d.getUTCDate()) + '/' 
+			    + zp(d.getUTCMonth() + 1) + '/' 
+			    + d.getUTCFullYear() + ', ' 
+			    + zp(d.getUTCHours()) + ':' 
+			    + zp(d.getUTCMinutes()) + ':' 
+			    + zp(d.getUTCSeconds());
 
 			res.send(formattedDate)
 		})
