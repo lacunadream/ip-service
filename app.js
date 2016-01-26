@@ -66,6 +66,30 @@ app.get('/link', function(req, res){
 		})
 })
 
+// Date
+
+app.get('/date', function(req, res){
+	Store
+		.findOne()
+		.sort('-date')
+		.exec(function(err, latest) {
+			if (err) return (err)
+			var d = latest.date
+
+		function zp(n) {
+  return (n > 9 ? '' : '0') + n;
+}
+var formattedDate = zp(d.getUTCDate()) + '/' 
+    + zp(d.getUTCMonth() + 1) + '/' 
+    + d.getUTCFullYear() + ', ' 
+    + zp(d.getUTCHours()) + ':' 
+    + zp(d.getUTCMinutes()) + ':' 
+    + zp(d.getUTCSeconds());
+
+			res.send(formattedDate)
+		})
+})
+
 app.get('/', function(req, res) {
     res.json({ message: 'eff off' });   
 });
