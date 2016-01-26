@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
 var fs = require('fs');
+var validator = require('express-validator')
 // var secret = require('./secret');
  
  var app = express();
@@ -10,6 +11,7 @@ var fs = require('fs');
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(validator());
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -23,7 +25,7 @@ mongoose.connection.on('error', function() {
 });
 
 var ipSchema = new mongoose.Schema({
-	ip: String, 
+	ip: { type: String}, 
 	date: { type : Date, default: Date.now }
 });
 
@@ -31,9 +33,16 @@ var Store = mongoose.model('Store', ipSchema);
 
 // Routes
 app.post('/api', function(req, res) {
+	var errText = 'just ip you piece of shit'
+	req.checkBody('ip', errText).notEmpty()
+
 	var machineIP = req.body.ip;
 	console.log(machineIP)
-	res.json({ message: machineIP})
+
+	var errors = req.validationErrors();
+	if (errors) {
+		return res.send(errText);
+	}
 
 	var store = new Store({
 		ip : machineIP
@@ -41,7 +50,11 @@ app.post('/api', function(req, res) {
 
 	store.save(function(err) {
 		if (err) return (err);
-	})
+		res.json('Done')
+	})	
+
+
+
 })
 
 app.get('/api', function(req, res){
