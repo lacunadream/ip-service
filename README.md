@@ -23,3 +23,5 @@ Routes:
 ####Notes
 I realize that they are many other better ways of keeping track of your machine's ip if it is not on a static line (ie no-ip). However I wanted to try out writing some bash scripts, and hence this repository :)
 
+Should add test coverage next! 
+
